@@ -1,5 +1,5 @@
 * {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -23,11 +23,30 @@
     .game-row {
       display: flex;
       gap: 5px;
-    }
-    .cell {
-      border: solid black;
-      height: 40px;
-      width: 40px;
+      .cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 2rem;
+        text-transform: uppercase;
+        border: solid rgb(198, 198, 198);
+        color: white;
+        height: 5vw;
+        width: 5vw;
+      }
+      .green {
+        background-color: #6aaa64;
+        border: none;
+      }
+      .yellow {
+        background-color: #c9b458;
+        border: none;
+      }
+      .grey {
+        background-color: #787c7e;
+        border: none;
+      }
     }
   }
 }
