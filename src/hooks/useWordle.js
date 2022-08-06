@@ -47,7 +47,7 @@ const useWordle = (solution) => {
 
   const handleKeyUp = ({ key }) => {
     if (key === "Enter") {
-      if (turn > 5) {
+      if (turn > 6) {
         console.log("no more guesses");
         return;
       }
@@ -55,7 +55,7 @@ const useWordle = (solution) => {
         console.log("repeat guess");
         return;
       }
-      if (currentGuess.length != 5) {
+      if (currentGuess.length != 6) {
         console.log("word too short");
         return;
       }
@@ -68,7 +68,7 @@ const useWordle = (solution) => {
       });
     }
     if (/^[A-Za-z]$/.test(key)) {
-      if (currentGuess.length < 5) {
+      if (currentGuess.length < 6) {
         setCurrentGuess((prev) => {
           return prev + key;
         });
