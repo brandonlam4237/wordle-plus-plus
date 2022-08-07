@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-function Row({ guess }) {
+function Row({ guess, currentGuess }) {
   if (guess) {
     return (
       <div className="game-row">
@@ -8,6 +8,23 @@ function Row({ guess }) {
           <div key={index} className={`${letter.color} cell`}>
             {letter.key}
           </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (currentGuess) {
+    let letters = currentGuess.split("");
+    console.log(letters);
+    return (
+      <div className="game-row current-row">
+        {letters.map((letter, i) => (
+          <div key={i} className="cell temp">
+            {letter}
+          </div>
+        ))}
+        {[...Array(6 - letters.length)].map((blank, i) => (
+          <div key={i} className="cell"></div>
         ))}
       </div>
     );
