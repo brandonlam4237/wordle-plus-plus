@@ -81,33 +81,54 @@
     }
   }
   .keyboard {
-    max-width: 500px;
-    margin: 20px auto;
-  }
-  .keyboard > div {
-    margin: 5px;
-    width: 40px;
-    height: 50px;
-    background: #d3d6da;
-    display: inline-block;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    //border: solid red;
+    gap: 8px;
     text-transform: uppercase;
     font-weight: bold;
-    border-radius: 6px;
-    line-height: 50px;
+    .keys {
+      display: flex;
+      gap: 8px;
+    }
+    .util {
+      width: 8vw;
+    }
+  }
+
+  .keys > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4vw;
+    height: 5vw;
+    border-radius: 4px;
+    background-color: rgb(198, 198, 198);
+  }
+  .r1.keys {
+    display: flex;
+  }
+  .r2.keys {
+    display: flex;
+    justify-content: center;
+  }
+  .r3.keys {
+    display: flex;
+    justify-content: center;
+    //border: solid red;
   }
 }
-.keyboard > div.green {
+.keys > div.green {
   background-color: #6aaa64;
   color: white;
   transition: all 0.3s ease-in;
 }
-.keyboard > div.yellow {
+.keys > div.yellow {
   background-color: #c9b458;
   color: white;
   transition: all 0.3s ease-in;
 }
-.keyboard > div.grey {
+.keys > div.grey {
   background-color: #787c7e;
   color: white;
   transition: all 0.3s ease-in;
