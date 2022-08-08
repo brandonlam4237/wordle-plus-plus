@@ -40,8 +40,6 @@ function Wordle({ solution }) {
     <div className="content">
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
       <Keyboard usedKeys={usedKeys} handleScreenKey={handleScreenKey} />
-      <div>Solution - {solution}</div>
-      <div>Current guess - {currentGuess}</div>
       {showModal && (
         <Modal isCorrect={isCorrect} turn={turn} solution={solution} />
       )}
