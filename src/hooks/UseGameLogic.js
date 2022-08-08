@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useWordle = (solution) => {
+const UseGameLogic = (solution, wordBank) => {
   const [turn, setTurn] = useState(0);
   const [currentGuess, setCurrentGuess] = useState("");
   const [guesses, setGuesses] = useState([...Array(6)]);
@@ -79,10 +79,16 @@ const useWordle = (solution) => {
         console.log("repeat guess");
         return;
       }
-      if (currentGuess.length != 6) {
+      if (currentGuess.length !== 6) {
         console.log("word too short");
         return;
       }
+
+      if (!wordBank.includes(currentGuess)) {
+        console.log("not a word");
+        return;
+      }
+
       const formattedGuess = formatGuess();
       addNewGuess(formattedGuess);
     }
@@ -111,10 +117,16 @@ const useWordle = (solution) => {
         console.log("repeat guess");
         return;
       }
-      if (currentGuess.length != 6) {
+      if (currentGuess.length !== 6) {
         console.log("word too short");
         return;
       }
+
+      if (!wordBank.includes(currentGuess)) {
+        console.log("not a word");
+        return;
+      }
+
       const formattedGuess = formatGuess();
       addNewGuess(formattedGuess);
     }
@@ -143,4 +155,4 @@ const useWordle = (solution) => {
   };
 };
 
-export default useWordle;
+export default UseGameLogic;

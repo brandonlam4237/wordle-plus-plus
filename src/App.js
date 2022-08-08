@@ -4,6 +4,7 @@ import "./scss/game.scss";
 
 function App() {
   const [solution, setSolution] = useState(null);
+  const [wordBank, setWordBank] = useState([]);
   useEffect(() => {
     fetch("http://localhost:3001/solutions")
       .then((res) => res.json())
@@ -14,10 +15,22 @@ function App() {
       });
   }, [setSolution]);
 
+  useEffect(() => {
+    fetch("http://localhost:3001/wordBank")
+      .then((res) => res.json())
+      .then((json) => {
+        let array = [];
+        for (var i in json) {
+          array.push(json[i].word);
+        }
+        setWordBank(array);
+      });
+  }, [setWordBank]);
+
   return (
     <div className="app">
       <h1>Wordle++</h1>
-      {solution && <Wordle solution={solution} />}
+      {solution && <Wordle solution={solution} wordBank={wordBank} />}
     </div>
   );
 }

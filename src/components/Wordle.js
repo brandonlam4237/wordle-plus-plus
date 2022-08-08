@@ -1,10 +1,11 @@
-import React, { Component, useEffect, useState } from "react";
-import useWordle from "../hooks/useWordle";
+import React, { useEffect, useState } from "react";
+import UseGameLogic from "../hooks/UseGameLogic";
+import useWordle from "../hooks/UseGameLogic";
 import Grid from "./Grid";
 import Keyboard from "./Keyboard";
 import Modal from "./Modal";
 
-function Wordle({ solution }) {
+function Wordle({ solution, wordBank }) {
   const {
     currentGuess,
     handleKeyUp,
@@ -13,7 +14,7 @@ function Wordle({ solution }) {
     turn,
     usedKeys,
     handleScreenKey,
-  } = useWordle(solution);
+  } = UseGameLogic(solution, wordBank);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
