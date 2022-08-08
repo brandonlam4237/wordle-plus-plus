@@ -97,11 +97,50 @@ const useWordle = (solution) => {
           return prev + key;
         });
       }
-      //console.log(key);
     }
   };
 
-  return { turn, currentGuess, guesses, isCorrect, handleKeyUp, usedKeys };
+  const handleScreenKey = (key) => {
+    console.log("key pressed:", key);
+    if (key === "enter") {
+      if (turn > 6) {
+        console.log("no more guesses");
+        return;
+      }
+      if (history.includes(currentGuess)) {
+        console.log("repeat guess");
+        return;
+      }
+      if (currentGuess.length != 6) {
+        console.log("word too short");
+        return;
+      }
+      const formattedGuess = formatGuess();
+      addNewGuess(formattedGuess);
+    }
+    if (key === "del") {
+      setCurrentGuess((prev) => {
+        return prev.slice(0, -1);
+      });
+    }
+    if (/^[A-Za-z]$/.test(key)) {
+      if (currentGuess.length < 6) {
+        setCurrentGuess((prev) => {
+          return prev + key;
+        });
+      }
+    }
+  };
+
+  return {
+    turn,
+    currentGuess,
+    guesses,
+    isCorrect,
+    handleKeyUp,
+    usedKeys,
+    handleScreenKey,
+  };
 };
 
 export default useWordle;

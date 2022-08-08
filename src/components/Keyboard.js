@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Keyboard({ usedKeys }) {
+function Keyboard({ usedKeys, handleScreenKey }) {
   const [letters, setLetters] = useState(null);
   useEffect(() => {
     fetch("http://localhost:3001/letters")
@@ -16,7 +16,11 @@ function Keyboard({ usedKeys }) {
           letters.slice(0, 10).map((letter) => {
             const color = usedKeys[letter.key];
             return (
-              <div key={letter.key} className={`${color} key`}>
+              <div
+                key={letter.key}
+                className={`${color} key`}
+                onClick={() => handleScreenKey(letter.key)}
+              >
                 {letter.key}
               </div>
             );
@@ -27,7 +31,11 @@ function Keyboard({ usedKeys }) {
           letters.slice(10, 19).map((letter) => {
             const color = usedKeys[letter.key];
             return (
-              <div key={letter.key} className={`${color} key`}>
+              <div
+                key={letter.key}
+                className={`${color} key`}
+                onClick={() => handleScreenKey(letter.key)}
+              >
                 {letter.key}
               </div>
             );
@@ -38,15 +46,22 @@ function Keyboard({ usedKeys }) {
           letters.slice(19, 28).map((letter) => {
             const color = usedKeys[letter.key];
             if (letter.key === "enter" || letter.key === "del") {
-              console.log("enter or del");
               return (
-                <div key={letter.key} className={`${color} key util`}>
+                <div
+                  key={letter.key}
+                  className={`${color} key util`}
+                  onClick={() => handleScreenKey(letter.key)}
+                >
                   {letter.key}
                 </div>
               );
             }
             return (
-              <div key={letter.key} className={`${color} key`}>
+              <div
+                key={letter.key}
+                className={`${color} key`}
+                onClick={() => handleScreenKey(letter.key)}
+              >
                 {letter.key}
               </div>
             );

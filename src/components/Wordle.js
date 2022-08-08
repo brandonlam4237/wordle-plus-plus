@@ -5,8 +5,15 @@ import Keyboard from "./Keyboard";
 import Modal from "./Modal";
 
 function Wordle({ solution }) {
-  const { currentGuess, handleKeyUp, guesses, isCorrect, turn, usedKeys } =
-    useWordle(solution);
+  const {
+    currentGuess,
+    handleKeyUp,
+    guesses,
+    isCorrect,
+    turn,
+    usedKeys,
+    handleScreenKey,
+  } = useWordle(solution);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -32,7 +39,7 @@ function Wordle({ solution }) {
   return (
     <div className="content">
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
-      <Keyboard usedKeys={usedKeys} />
+      <Keyboard usedKeys={usedKeys} handleScreenKey={handleScreenKey} />
       <div>Solution - {solution}</div>
       <div>Current guess - {currentGuess}</div>
       {showModal && (
