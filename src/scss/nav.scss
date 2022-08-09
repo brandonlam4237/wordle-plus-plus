@@ -1,4 +1,5 @@
 @import "breakpoints";
+@import url("https://fonts.googleapis.com/css2?family=Bitter:wght@900&display=swap");
 
 .nav {
   width: 100vw;
@@ -15,6 +16,7 @@
   }
   h1 {
     font-size: 2rem;
+    font-family: "Bitter", serif;
   }
   .menu {
     position: absolute;
@@ -37,6 +39,7 @@
     height: 1.8rem;
   }
   .settings {
-    height: 2rem;
+    height: 2.2rem;
+    margin-left: -3px;
   }
 }
