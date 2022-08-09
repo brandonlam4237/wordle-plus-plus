@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  //justify-content: center;
   gap: 20px;
   //border: solid red;
   height: 100vh;
@@ -26,10 +26,20 @@
   .grid {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    @include xs {
+      gap: 3px;
+    }
+    @include sm {
+      gap: 5px;
+    }
     .game-row {
       display: flex;
-      gap: 5px;
+      @include xs {
+        gap: 3px;
+      }
+      @include sm {
+        gap: 5px;
+      }
       .cell {
         display: flex;
         justify-content: center;
@@ -99,13 +109,23 @@
   .keyboard {
     display: flex;
     flex-direction: column;
-    //border: solid red;
-    gap: 8px;
+    @include xs {
+      gap: 6px;
+    }
+    @include sm {
+      gap: 8px;
+    }
     text-transform: uppercase;
     font-weight: bold;
     .keys {
       display: flex;
-      gap: 8px;
+
+      @include xs {
+        gap: 6px;
+      }
+      @include sm {
+        gap: 8px;
+      }
     }
     .util {
       @include xs {
@@ -121,14 +141,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     border-radius: 4px;
     background-color: #d3d6da;
     cursor: pointer;
     user-select: none;
     @include xs {
-      width: 1.6rem;
-      height: 2.5rem;
+      width: 1.9rem;
+      height: 2.7rem;
       font-size: 0.7rem;
     }
     @include sm {
@@ -148,7 +167,6 @@
   .r3.keys {
     display: flex;
     justify-content: center;
-    //border: solid red;
   }
 }
 .keys > div.green {

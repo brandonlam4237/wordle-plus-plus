@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Wordle from "./components/Wordle";
 import "./scss/game.scss";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [solution, setSolution] = useState(null);
@@ -29,7 +30,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Wordle++</h1>
+      <Navbar />
       {solution && <Wordle solution={solution} wordBank={wordBank} />}
     </div>
   );

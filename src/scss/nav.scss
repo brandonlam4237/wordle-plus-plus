@@ -1,0 +1,42 @@
+@import "breakpoints";
+
+.nav {
+  width: 100vw;
+  display: flex;
+
+  align-items: center;
+  border-bottom: solid 1px #d3d6da;
+  padding: 16px;
+  @include xs {
+    justify-content: flex-start;
+  }
+  @include sm {
+    justify-content: center;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .menu {
+    position: absolute;
+    right: 0;
+    //border: solid red;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 10px;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .icon {
+    height: 1.9rem;
+  }
+  .chart {
+    height: 1.8rem;
+  }
+  .settings {
+    height: 2rem;
+  }
+}
