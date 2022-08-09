@@ -4,6 +4,8 @@ import useWordle from "../hooks/UseGameLogic";
 import Grid from "./Grid";
 import Keyboard from "./Keyboard";
 import Modal from "./Modal";
+import { ToastContainer, toast, Flip } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Wordle({ solution, wordBank }) {
   const {
@@ -44,6 +46,19 @@ function Wordle({ solution, wordBank }) {
       {showModal && (
         <Modal isCorrect={isCorrect} turn={turn} solution={solution} />
       )}
+      <ToastContainer
+        theme="dark"
+        position="bottom-right"
+        autoClose={200}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        transition={Flip}
+      />
     </div>
   );
 }

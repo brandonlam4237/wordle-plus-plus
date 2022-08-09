@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer, toast, Flip } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UseGameLogic = (solution, wordBank) => {
   const [turn, setTurn] = useState(0);
@@ -85,7 +87,15 @@ const UseGameLogic = (solution, wordBank) => {
       }
 
       if (!wordBank.includes(currentGuess)) {
-        console.log("not a word");
+        toast.warn("Not in word list", {
+          position: "bottom-right",
+          autoClose: 200,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         return;
       }
 
@@ -123,7 +133,15 @@ const UseGameLogic = (solution, wordBank) => {
       }
 
       if (!wordBank.includes(currentGuess)) {
-        console.log("not a word");
+        toast.warn("Not in word list", {
+          position: "bottom-right",
+          autoClose: 200,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         return;
       }
 
