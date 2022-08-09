@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import backspace from "../assets/backspace-icon.png";
 
 function Keyboard({ usedKeys, handleScreenKey }) {
   const [letters, setLetters] = useState(null);
@@ -47,7 +48,7 @@ function Keyboard({ usedKeys, handleScreenKey }) {
         {letters &&
           letters.slice(19, 28).map((letter) => {
             const color = usedKeys[letter.key];
-            if (letter.key === "enter" || letter.key === "del") {
+            if (letter.key === "enter") {
               return (
                 <div
                   key={letter.key}
@@ -55,6 +56,17 @@ function Keyboard({ usedKeys, handleScreenKey }) {
                   onClick={() => handleScreenKey(letter.key)}
                 >
                   {letter.key}
+                </div>
+              );
+            }
+            if (letter.key === "del") {
+              return (
+                <div
+                  key={letter.key}
+                  className={`${color} key util`}
+                  onClick={() => handleScreenKey(letter.key)}
+                >
+                  <img src={backspace} className="backspace-icon"></img>
                 </div>
               );
             }
