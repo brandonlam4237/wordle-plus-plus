@@ -107,7 +107,7 @@ const UseGameLogic = (solution, wordBank) => {
   };
 
   const handleScreenKey = (key) => {
-    console.log("key pressed:", key);
+    //console.log("key pressed:", key);
     if (key === "enter") {
       if (turn > 6) {
         console.log("no more guesses");

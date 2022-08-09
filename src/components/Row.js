@@ -15,7 +15,7 @@ function Row({ guess, currentGuess }) {
 
   if (currentGuess) {
     let letters = currentGuess.split("");
-    console.log(letters);
+    //console.log(letters);
     return (
       <div className="game-row current-row">
         {letters.map((letter, i) => (
