@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ToastContainer, toast, Flip } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const UseGameLogic = (solution, wordBank) => {

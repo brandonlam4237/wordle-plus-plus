@@ -12,7 +12,7 @@
   flex-direction: column;
   align-items: center;
   //justify-content: center;
-  gap: 20px;
+  //gap: 20px;
   //border: solid red;
   height: 100vh;
   width: 100vw;
@@ -21,11 +21,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
+    gap: 15px;
+    //border: solid red;
+    width: 100%;
+    height: 100%;
   }
   .grid {
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
     @include xs {
       gap: 3px;
     }
@@ -129,6 +134,9 @@
     }
     .util {
       @include xs {
+        width: 2.8rem;
+      }
+      @include xsm {
         width: 3rem;
       }
       @include sm {
@@ -146,13 +154,18 @@
     cursor: pointer;
     user-select: none;
     @include xs {
+      width: 1.6rem;
+      height: 2.5rem;
+      font-size: 0.6rem;
+    }
+    @include xsm {
       width: 1.9rem;
       height: 2.7rem;
       font-size: 0.7rem;
     }
     @include sm {
-      width: 2.5rem;
-      height: 3.3rem;
+      width: 2.8rem;
+      height: 3.6rem;
       font-size: 0.8rem;
     }
   }
@@ -185,7 +198,7 @@
   transition: all 0.3s ease-in;
 }
 
-.modal {
+.modal-end {
   background: rgba(255, 255, 255, 0.7);
   position: fixed;
   width: 100%;
@@ -193,7 +206,7 @@
   top: 0;
   left: 0;
 }
-.modal div {
+.modal-end div {
   max-width: 480px;
   background: #fff;
   padding: 40px;
@@ -213,7 +226,7 @@
     max-width: 30%;
   }
 }
-.modal .solution-word {
+.modal-end .solution-word {
   color: #ff004c;
   font-weight: bold;
   font-size: 0.8em;

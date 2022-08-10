@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import UseGameLogic from "../hooks/UseGameLogic";
-import useWordle from "../hooks/UseGameLogic";
 import Grid from "./Grid";
 import Keyboard from "./Keyboard";
 import Modal from "./Modal";
-import { ToastContainer, toast, Flip } from "react-toastify";
+import { ToastContainer, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Wordle({ solution, wordBank }) {

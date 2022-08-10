@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 
 function Modal({ isCorrect, turn, solution }) {
   return (
-    <div className="modal">
+    <div className="modal-end">
       {isCorrect && (
         <div>
           <h1>You Win!</h1>

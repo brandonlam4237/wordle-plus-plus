@@ -66,7 +66,11 @@ function Keyboard({ usedKeys, handleScreenKey }) {
                   className={`${color} key util`}
                   onClick={() => handleScreenKey(letter.key)}
                 >
-                  <img src={backspace} className="backspace-icon"></img>
+                  <img
+                    src={backspace}
+                    className="backspace-icon"
+                    alt="delete-icon"
+                  ></img>
                 </div>
               );
             }
