@@ -13,7 +13,7 @@ function HelpModal({ closeModal }) {
           </div>
           <div className="description">
             <p>
-              Guess the <b>WORDLE</b> in 6 tries
+              Guess the <b>WORDLE</b> in 6 tries.
             </p>
             <p>
               Each guess must be a valid 6-letter word. Hit the enter button to
