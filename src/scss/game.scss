@@ -207,6 +207,7 @@
   left: 0;
 }
 .modal-end div {
+  position: relative;
   max-width: 480px;
   background: #fff;
   padding: 40px;
@@ -217,13 +218,21 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  img {
+    height: 20px;
+    position: absolute;
+    margin-right: 15px;
+    margin-top: 15px;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+  }
   button {
     padding: 8px;
     border-radius: 6px;
     border: solid;
-    //text-transform: uppercase;
     font-weight: bold;
-    max-width: 30%;
+    cursor: pointer;
   }
 }
 .modal-end .solution-word {

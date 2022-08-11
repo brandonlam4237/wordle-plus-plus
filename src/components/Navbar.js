@@ -4,9 +4,11 @@ import question from "../assets/question-icon.png";
 import settings from "../assets/settings-icon.png";
 import chart from "../assets/chart-icon.png";
 import HelpModal from "./HelpModal";
+import SettingsModal from "./SettingsModal";
 
 function Navbar() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
   return (
     <nav>
       <div className="container nav">
@@ -22,12 +24,19 @@ function Navbar() {
           <a href="#">
             <img src={chart} className="icon chart" alt="chart-icon" />
           </a>
-          <a href="#">
+          <div
+            onClick={() => {
+              setSettingsOpen(true);
+            }}
+          >
             <img src={settings} className="icon settings" alt="settings-icon" />
-          </a>
+          </div>
         </div>
       </div>
       {modalOpen && <HelpModal closeModal={() => setModalOpen(false)} />}
+      {settingsOpen && (
+        <SettingsModal closeSettings={() => setSettingsOpen(false)} />
+      )}
     </nav>
   );
 }

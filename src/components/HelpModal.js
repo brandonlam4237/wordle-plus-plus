@@ -28,14 +28,15 @@ function HelpModal({ closeModal }) {
             <b>Examples</b>
             <div>
               <div className="style-word">
-                <div id="w-letter">W</div>
+                <div id="w-letter">D</div>
+                <div>R</div>
                 <div>E</div>
                 <div>A</div>
                 <div>R</div>
                 <div>Y</div>
               </div>
               <div>
-                The letter <b>W</b> is in the word and in the correct spot.
+                The letter <b>D</b> is in the word and in the correct spot.
               </div>
             </div>
             <div>
@@ -44,7 +45,8 @@ function HelpModal({ closeModal }) {
                 <div id="i-letter">I</div>
                 <div>L</div>
                 <div>L</div>
-                <div>S</div>
+                <div>O</div>
+                <div>W</div>
               </div>
               <div>
                 The letter <b>I</b> is in the word but in the wrong spot.
@@ -52,7 +54,8 @@ function HelpModal({ closeModal }) {
             </div>
             <div>
               <div className="style-word">
-                <div>V</div>
+                <div>P</div>
+                <div>L</div>
                 <div>A</div>
                 <div>G</div>
                 <div id="u-letter">U</div>
