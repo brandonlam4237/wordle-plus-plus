@@ -1,4 +1,5 @@
 @import "breakpoints";
+@import "colors";
 
 * {
   font-family: Helvetica, Arial, sans-serif;
@@ -28,6 +29,8 @@
     height: 100%;
   }
   .grid {
+    position: relative;
+    z-index: 10;
     display: flex;
     flex-direction: column;
     margin-top: 10px;
@@ -52,7 +55,7 @@
         font-weight: bold;
 
         text-transform: uppercase;
-        border: solid 2px #d3d6da;
+        border: solid 2px $border-light;
         color: white;
 
         @include xs {
@@ -150,7 +153,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 4px;
-    background-color: #d3d6da;
+    background-color: $keys;
     cursor: pointer;
     user-select: none;
     @include xs {
@@ -169,31 +172,25 @@
       font-size: 0.8rem;
     }
   }
-  .r1.keys {
-    display: flex;
-    justify-content: center;
-  }
-  .r2.keys {
-    display: flex;
-    justify-content: center;
-  }
+  .r1.keys,
+  .r2.keys,
   .r3.keys {
     display: flex;
     justify-content: center;
   }
 }
 .keys > div.green {
-  background-color: #6aaa64;
+  background-color: $green;
   color: white;
   transition: all 0.3s ease-in;
 }
 .keys > div.yellow {
-  background-color: #c9b458;
+  background-color: $yellow;
   color: white;
   transition: all 0.3s ease-in;
 }
 .keys > div.grey {
-  background-color: #787c7e;
+  background-color: $grey;
   color: white;
   transition: all 0.3s ease-in;
 }
@@ -258,13 +255,13 @@
   0% {
     transform: rotateX(0);
     background-color: white;
-    border: solid 1px rgb(132, 132, 132);
+    border: solid 1px $keys;
     color: black;
   }
   45% {
     transform: rotateX(90deg);
     background-color: white;
-    border: solid 1px rgb(132, 132, 132);
+    border: solid 1px $keys;
     color: black;
   }
   55% {
@@ -284,13 +281,13 @@
 @keyframes bounce {
   0% {
     transform: scale(1);
-    border-color: #d3d6da;
+    border-color: $border-light;
   }
   50% {
     transform: scale(1.1);
   }
   100% {
     transform: scale(1);
-    border-color: rgb(132, 132, 132);
+    border-color: $border-dark;
   }
 }

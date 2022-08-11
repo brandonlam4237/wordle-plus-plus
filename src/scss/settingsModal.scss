@@ -1,4 +1,6 @@
 .settings {
+  position: relative;
+  z-index: 100;
   .modal {
     background: rgba(255, 255, 255, 0.5);
     position: fixed;
