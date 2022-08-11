@@ -2,8 +2,15 @@ import { useEffect, useState } from "react";
 import Wordle from "./components/Wordle";
 import "./scss/game.scss";
 import Navbar from "./components/Navbar";
+import { createContext } from "react";
+export const ThemeContext = createContext(null);
 
 function App() {
+  const [theme, setTheme] = useState("light");
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  };
+
   const [solution, setSolution] = useState(null);
   const [wordBank, setWordBank] = useState([]);
   useEffect(() => {
@@ -29,10 +36,14 @@ function App() {
   }, [setWordBank]);
 
   return (
-    <div className="app">
-      <Navbar />
-      {solution && <Wordle solution={solution} wordBank={wordBank} />}
-    </div>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div id={theme}>
+        <div className="app">
+          <Navbar />
+          {solution && <Wordle solution={solution} wordBank={wordBank} />}
+        </div>
+      </div>
+    </ThemeContext.Provider>
   );
 }
 

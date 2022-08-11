@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../scss/helpmodal.scss";
-import close from "../assets/close-icon.png";
+import { ThemeContext } from "../App";
+import closeLight from "../assets/close-light.png";
+import closeDark from "../assets/close-dark.png";
 
 function HelpModal({ closeModal }) {
+  const theme = useContext(ThemeContext);
   return (
     <div className="help">
       <div className="modal">
         <div className="container">
           <div className="header">
             <div>HOW TO PLAY</div>
-            <img src={close} onClick={closeModal} />
+            {theme.theme === "light" && (
+              <img src={closeLight} onClick={closeModal} />
+            )}
+            {theme.theme === "dark" && (
+              <img src={closeDark} onClick={closeModal} />
+            )}
           </div>
           <div className="description">
             <p>
@@ -28,7 +36,7 @@ function HelpModal({ closeModal }) {
             <b>Examples</b>
             <div>
               <div className="style-word">
-                <div id="w-letter">D</div>
+                <div id="green-letter">D</div>
                 <div>R</div>
                 <div>E</div>
                 <div>A</div>
@@ -42,7 +50,7 @@ function HelpModal({ closeModal }) {
             <div>
               <div className="style-word">
                 <div>P</div>
-                <div id="i-letter">I</div>
+                <div id="yellow-letter">I</div>
                 <div>L</div>
                 <div>L</div>
                 <div>O</div>
@@ -58,7 +66,7 @@ function HelpModal({ closeModal }) {
                 <div>L</div>
                 <div>A</div>
                 <div>G</div>
-                <div id="u-letter">U</div>
+                <div id="grey-letter">U</div>
                 <div>E</div>
               </div>
               <div className="last">

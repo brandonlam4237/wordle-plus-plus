@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../scss/nav.scss";
 import question from "../assets/question-icon.png";
 import settings from "../assets/settings-icon.png";
 import chart from "../assets/chart-icon.png";
 import HelpModal from "./HelpModal";
 import SettingsModal from "./SettingsModal";
+import { ThemeContext } from "../App";
+import chartDark from "../assets/chart-dark.png";
+import questionDark from "../assets/question-dark.png";
+import settingsDark from "../assets/settings-dark.png";
 
 function Navbar() {
   const [modalOpen, setModalOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const theme = useContext(ThemeContext);
   return (
     <nav>
       <div className="container nav">
@@ -19,17 +24,28 @@ function Navbar() {
               setModalOpen(true);
             }}
           >
-            <img src={question} className="icon" alt="question-mark" />
+            {theme.theme === "light" && <img src={question} className="icon" />}
+            {theme.theme === "dark" && (
+              <img src={questionDark} className="icon" />
+            )}
           </div>
           <a href="#">
-            <img src={chart} className="icon chart" alt="chart-icon" />
+            {theme.theme === "light" && <img src={chart} className="chart" />}
+            {theme.theme === "dark" && (
+              <img src={chartDark} className="chart" />
+            )}
           </a>
           <div
             onClick={() => {
               setSettingsOpen(true);
             }}
           >
-            <img src={settings} className="icon settings" alt="settings-icon" />
+            {theme.theme === "light" && (
+              <img src={settings} className="icon settings" />
+            )}
+            {theme.theme === "dark" && (
+              <img src={settingsDark} className="icon settings" />
+            )}
           </div>
         </div>
       </div>
