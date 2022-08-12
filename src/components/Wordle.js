@@ -5,10 +5,10 @@ import Keyboard from "./Keyboard";
 import Modal from "./Modal";
 import { ToastContainer, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ThemeContext } from "../App";
+import { SettingsContext } from "../App";
 
 function Wordle({ solution, wordBank }) {
-  const theme = useContext(ThemeContext);
+  const settings = useContext(SettingsContext);
   const {
     currentGuess,
     handleKeyUp,
@@ -47,7 +47,7 @@ function Wordle({ solution, wordBank }) {
       {showModal && (
         <Modal isCorrect={isCorrect} turn={turn} solution={solution} />
       )}
-      {theme.theme === "light" && (
+      {settings.theme === "light" && (
         <ToastContainer
           theme="dark"
           position="bottom-right"
@@ -62,7 +62,7 @@ function Wordle({ solution, wordBank }) {
           transition={Flip}
         />
       )}
-      {theme.theme === "dark" && (
+      {settings.theme === "dark" && (
         <ToastContainer
           theme="light"
           position="bottom-right"

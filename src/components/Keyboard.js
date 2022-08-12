@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import backspace from "../assets/backspace-icon.png";
-import { ThemeContext } from "../App";
+import { SettingsContext } from "../App";
 import backspaceDark from "../assets/backspace-dark.png";
 
 function Keyboard({ usedKeys, handleScreenKey }) {
   const [letters, setLetters] = useState(null);
-  const theme = useContext(ThemeContext);
+  const settings = useContext(SettingsContext);
 
   useEffect(() => {
     fetch("http://localhost:3001/letters")
@@ -69,14 +69,14 @@ function Keyboard({ usedKeys, handleScreenKey }) {
                   className={`${color} key util`}
                   onClick={() => handleScreenKey(letter.key)}
                 >
-                  {theme.theme === "light" && (
+                  {settings.theme === "light" && (
                     <img
                       src={backspace}
                       className="backspace-icon"
                       alt="delete-icon"
                     />
                   )}
-                  {theme.theme === "dark" && (
+                  {settings.theme === "dark" && (
                     <img
                       src={backspaceDark}
                       className="backspace-icon"

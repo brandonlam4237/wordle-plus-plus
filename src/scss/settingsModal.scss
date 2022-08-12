@@ -35,15 +35,21 @@
       }
     }
 
-    .dark-theme {
+    .dark-theme,
+    .hard-mode {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      margin-top: 20px;
+      margin-top: 10px;
       font-size: 1.2rem;
-      padding-bottom: 10px;
+      padding-bottom: 20px;
       border-bottom: solid $border-light;
+      p {
+        font-size: 0.75rem;
+        margin-top: 5px;
+        color: $grey;
+      }
     }
 
     img {
@@ -90,6 +96,7 @@
     input:checked + .slider {
       background-color: $green;
     }
+
     input:checked + .slider::before {
       transform: translateX(20px);
     }
@@ -141,15 +148,21 @@
       right: 0;
     }
 
-    .dark-theme {
+    .dark-theme,
+    .hard-mode {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      margin-top: 20px;
+      margin-top: 10px;
       font-size: 1.2rem;
-      padding-bottom: 10px;
+      padding-bottom: 20px;
       border-bottom: solid $border-dark2;
+      p {
+        font-size: 0.75rem;
+        margin-top: 5px;
+        color: $grey;
+      }
     }
     //SWITCH TOGGLE
     .switch {

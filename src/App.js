@@ -1,14 +1,23 @@
 import { useEffect, useState } from "react";
 import Wordle from "./components/Wordle";
 import "./scss/game.scss";
+import "./scss/hc-game.scss";
 import Navbar from "./components/Navbar";
 import { createContext } from "react";
-export const ThemeContext = createContext(null);
+export const SettingsContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState("light");
+  const [hardMode, setHardMode] = useState(false);
+  const [contrastMode, setContrastMode] = useState("normal");
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  };
+  const toggleHardMode = () => {
+    setHardMode((curr) => !curr);
+  };
+  const toggleContrastMode = () => {
+    setContrastMode((curr) => (curr === "normal" ? "high" : "normal"));
   };
 
   const [solution, setSolution] = useState(null);
@@ -36,14 +45,25 @@ function App() {
   }, [setWordBank]);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div id={theme}>
-        <div className="app">
-          <Navbar />
-          {solution && <Wordle solution={solution} wordBank={wordBank} />}
+    <SettingsContext.Provider
+      value={{
+        theme,
+        toggleTheme,
+        hardMode,
+        toggleHardMode,
+        contrastMode,
+        toggleContrastMode,
+      }}
+    >
+      <div id={contrastMode}>
+        <div id={theme}>
+          <div className="app">
+            <Navbar />
+            {solution && <Wordle solution={solution} wordBank={wordBank} />}
+          </div>
         </div>
       </div>
-    </ThemeContext.Provider>
+    </SettingsContext.Provider>
   );
 }
 

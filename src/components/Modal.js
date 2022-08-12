@@ -1,20 +1,20 @@
 import React, { useState, useContext } from "react";
-import { ThemeContext } from "../App";
+import { SettingsContext } from "../App";
 import closeLight from "../assets/close-light.png";
 import closeDark from "../assets/close-dark.png";
 
 function Modal({ isCorrect, turn, solution }) {
-  const theme = useContext(ThemeContext);
+  const settings = useContext(SettingsContext);
   const [hideModal, setHideModal] = useState(false);
   return (
     !hideModal && (
       <div className="modal-end">
         {isCorrect && (
           <div>
-            {theme.theme === "light" && (
+            {settings.theme === "light" && (
               <img src={closeLight} onClick={setHideModal} />
             )}
-            {theme.theme === "dark" && (
+            {settings.theme === "dark" && (
               <img src={closeDark} onClick={setHideModal} />
             )}
 
@@ -32,10 +32,10 @@ function Modal({ isCorrect, turn, solution }) {
         )}
         {!isCorrect && (
           <div>
-            {theme.theme === "light" && (
+            {settings.theme === "light" && (
               <img src={closeLight} onClick={setHideModal} />
             )}
-            {theme.theme === "dark" && (
+            {settings.theme === "dark" && (
               <img src={closeDark} onClick={setHideModal} />
             )}
             <h1>You Lose!</h1>

@@ -1,21 +1,22 @@
 import React, { useContext } from "react";
 import "../scss/helpmodal.scss";
-import { ThemeContext } from "../App";
+import "../scss/hc-helpmodal.scss";
+import { SettingsContext } from "../App";
 import closeLight from "../assets/close-light.png";
 import closeDark from "../assets/close-dark.png";
 
 function HelpModal({ closeModal }) {
-  const theme = useContext(ThemeContext);
+  const settings = useContext(SettingsContext);
   return (
     <div className="help">
       <div className="modal">
         <div className="container">
           <div className="header">
             <div>HOW TO PLAY</div>
-            {theme.theme === "light" && (
+            {settings.theme === "light" && (
               <img src={closeLight} onClick={closeModal} />
             )}
-            {theme.theme === "dark" && (
+            {settings.theme === "dark" && (
               <img src={closeDark} onClick={closeModal} />
             )}
           </div>
