@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -9,6 +9,11 @@ const UseGameLogic = (solution, wordBank) => {
   const [history, setHistory] = useState([]);
   const [isCorrect, setIsCorrect] = useState(false);
   const [usedKeys, setUsedKeys] = useState({});
+  const [hintKeys, setHintKeys] = useState([]);
+
+  useEffect(() => {
+    console.log(hintKeys);
+  }, [hintKeys]);
 
   const formatGuess = () => {
     let solutionArray = [...solution];
@@ -51,12 +56,28 @@ const UseGameLogic = (solution, wordBank) => {
         const currentColor = newKeys[letter.key];
         if (letter.color === "green") {
           newKeys[letter.key] = "green";
+          setHintKeys((prevHintKeys) => {
+            let newHintKeys = [...prevHintKeys];
+            if (!newHintKeys.includes(letter.key)) {
+              newHintKeys.push(letter.key);
+            }
+            return newHintKeys;
+          });
           return;
         }
         if (letter.color === "yellow" && currentColor !== "green") {
           newKeys[letter.key] = "yellow";
+          setHintKeys((prevHintKeys) => {
+            let newHintKeys = [...prevHintKeys];
+            if (!newHintKeys.includes(letter.key)) {
+              newHintKeys.push(letter.key);
+            }
+            return newHintKeys;
+          });
           return;
         }
+        // add these green and yellow keys to a separate array for hint chars
+
         if (
           letter.color === "grey" &&
           currentColor !== "green" &&
