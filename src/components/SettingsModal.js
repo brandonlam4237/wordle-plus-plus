@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "../scss/settingsModal.scss";
 import "../scss/hc-settingsModal.scss";
 import { SettingsContext } from "../App";

@@ -19,6 +19,33 @@ function App() {
   const toggleContrastMode = () => {
     setContrastMode((curr) => (curr === "normal" ? "high" : "normal"));
   };
+  useEffect(() => {
+    const theme_mode = window.localStorage.getItem("THEME_MODE");
+    if (theme_mode !== null) {
+      setTheme(JSON.parse(theme_mode));
+    }
+    const contrast_mode = window.localStorage.getItem("CONTRAST_MODE");
+    if (contrast_mode !== null) {
+      setContrastMode(JSON.parse(contrast_mode));
+    }
+  }, []);
+  useEffect(() => {
+    window.localStorage.setItem("THEME_MODE", JSON.stringify(theme));
+  }, [theme]);
+
+  useEffect(() => {
+    window.localStorage.setItem("CONTRAST_MODE", JSON.stringify(contrastMode));
+  }, [contrastMode]);
+  /*
+  useEffect(() => {
+    const contrast_mode = window.localStorage.getItem("CONTRAST_MODE");
+    if (contrast_mode !== null) {
+      setContrastMode(JSON.parse(contrast_mode));
+    }
+  }, []);
+  useEffect(() => {
+    window.localStorage.setItem("CONTRAST_MODE", JSON.stringify(contrastMode));
+  }, [contrastMode]); */
 
   const [solution, setSolution] = useState(null);
   const [wordBank, setWordBank] = useState([]);
