@@ -40,12 +40,24 @@ function SettingsModal({ closeSettings }) {
           <div className="dark-theme">
             <div>Dark Theme</div>
             <label className="switch">
-              <input
-                type="checkbox"
-                onChange={() => {
-                  settings.toggleTheme();
-                }}
-              />
+              {settings.theme === "dark" && (
+                <input
+                  type="checkbox"
+                  onChange={() => {
+                    settings.toggleTheme();
+                  }}
+                  checked
+                />
+              )}
+              {settings.theme === "light" && (
+                <input
+                  type="checkbox"
+                  onChange={() => {
+                    settings.toggleTheme();
+                  }}
+                />
+              )}
+
               <span className="slider" />
             </label>
           </div>
@@ -55,13 +67,25 @@ function SettingsModal({ closeSettings }) {
               <p>For improved color vision</p>
             </div>
             <label className="switch">
-              <input
-                type="checkbox"
-                onChange={() => {
-                  settings.toggleContrastMode();
-                  console.log(settings.contrastMode);
-                }}
-              />
+              {settings.contrastMode === "high" && (
+                <input
+                  type="checkbox"
+                  onChange={() => {
+                    settings.toggleContrastMode();
+                  }}
+                  checked
+                />
+              )}
+              {settings.contrastMode === "normal" && (
+                <input
+                  type="checkbox"
+                  onChange={() => {
+                    settings.toggleContrastMode();
+                    console.log(settings.contrastMode);
+                  }}
+                />
+              )}
+
               <span className="slider" />
             </label>
           </div>
