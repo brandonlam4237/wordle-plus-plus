@@ -11,10 +11,6 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
   const [usedKeys, setUsedKeys] = useState({});
   const [hintKeys, setHintKeys] = useState([]);
 
-  useEffect(() => {
-    console.log(hintKeys);
-  }, [hintKeys]);
-
   const arraysEqual = (a, b) => {
     if (a === b) return true;
     if (a == null || b == null) return false;
@@ -79,10 +75,7 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
               if (!foundFlag) {
                 newHintKeys.push([letter.key, index, letter.color]);
               }
-              /*
-              if (!newHintKeys.includes([letter.key, index, letter.color])) {
-                newHintKeys.push([letter.key, index, letter.color]);
-              } */
+
               return newHintKeys;
             });
           }
@@ -103,10 +96,7 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
               if (!foundFlag) {
                 newHintKeys.push([letter.key, index, letter.color]);
               }
-              /*
-              if (!newHintKeys.includes([letter.key, index, letter.color])) {
-                newHintKeys.push([letter.key, index, letter.color]);
-              } */
+
               return newHintKeys;
             });
           }
@@ -159,20 +149,40 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
         const guessArray = [...currentGuess];
         let flag = false;
         hintKeys.forEach((value) => {
+          // value[0] = letter
+          // value[1] = index
+          // value[2] = color
+          // the checks will differ by the color
+          // green => the guess word must have that letter at that index
+          // yellow => the guess word must include the letter index doesnt matter
+
+          // checks for yellow hint requirement
           if (!guessArray.includes(value[0])) {
-            toast.warn("Hard Mode On - Must use all hints", {
-              position: "bottom-right",
-              autoClose: 200,
-              hideProgressBar: true,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
             flag = true;
           }
         });
+        // check for green hints requirement
+        const filteredHints = hintKeys.filter((value) => {
+          return value[2] === "green";
+        });
+
+        // array of [letter, index] - now check that this pairing is found in the guess
+        filteredHints.forEach((value) => {
+          if (guessArray[value[1]] !== value[0]) {
+            flag = true;
+          }
+        });
+
         if (flag) {
+          toast.warn("Hard Mode - Must use all hints", {
+            position: "bottom-right",
+            autoClose: 200,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
           return;
         }
       }
@@ -226,21 +236,41 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
       if (hardMode) {
         const guessArray = [...currentGuess];
         let flag = false;
-        hintKeys.forEach((letter) => {
-          if (!guessArray.includes(letter)) {
-            toast.warn("Hard Mode On - Must use all hints", {
-              position: "bottom-right",
-              autoClose: 200,
-              hideProgressBar: true,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+        hintKeys.forEach((value) => {
+          // value[0] = letter
+          // value[1] = index
+          // value[2] = color
+          // the checks will differ by the color
+          // green => the guess word must have that letter at that index
+          // yellow => the guess word must include the letter index doesnt matter
+
+          // checks for yellow hint requirement
+          if (!guessArray.includes(value[0])) {
             flag = true;
           }
         });
+        // check for green hints requirement
+        const filteredHints = hintKeys.filter((value) => {
+          return value[2] === "green";
+        });
+
+        // array of [letter, index] - now check that this pairing is found in the guess
+        filteredHints.forEach((value) => {
+          if (guessArray[value[1]] !== value[0]) {
+            flag = true;
+          }
+        });
+
         if (flag) {
+          toast.warn("Hard Mode - Must use all hints", {
+            position: "bottom-right",
+            autoClose: 200,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
           return;
         }
       }
