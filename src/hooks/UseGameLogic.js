@@ -15,6 +15,16 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
     console.log(hintKeys);
   }, [hintKeys]);
 
+  const arraysEqual = (a, b) => {
+    if (a === b) return true;
+    if (a == null || b == null) return false;
+    if (a.length !== b.length) return false;
+    for (var i = 0; i < a.length; ++i) {
+      if (a[i] !== b[i]) return false;
+    }
+    return true;
+  };
+
   const formatGuess = () => {
     let solutionArray = [...solution];
     let formattedGuess = [...currentGuess].map((letter) => {
@@ -52,16 +62,27 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
     });
     setUsedKeys((prevUsedKeys) => {
       let newKeys = { ...prevUsedKeys };
-      formattedGuess.forEach((letter) => {
+      formattedGuess.forEach((letter, index) => {
         const currentColor = newKeys[letter.key];
         if (letter.color === "green") {
           newKeys[letter.key] = "green";
           if (hardMode) {
             setHintKeys((prevHintKeys) => {
               let newHintKeys = [...prevHintKeys];
-              if (!newHintKeys.includes(letter.key)) {
-                newHintKeys.push(letter.key);
+              let foundFlag = false;
+              for (let i = 0; i < newHintKeys.length; i++) {
+                let currentHint = [letter.key, index, letter.color];
+                if (arraysEqual(newHintKeys[i], currentHint)) {
+                  foundFlag = true;
+                }
               }
+              if (!foundFlag) {
+                newHintKeys.push([letter.key, index, letter.color]);
+              }
+              /*
+              if (!newHintKeys.includes([letter.key, index, letter.color])) {
+                newHintKeys.push([letter.key, index, letter.color]);
+              } */
               return newHintKeys;
             });
           }
@@ -72,15 +93,25 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
           if (hardMode) {
             setHintKeys((prevHintKeys) => {
               let newHintKeys = [...prevHintKeys];
-              if (!newHintKeys.includes(letter.key)) {
-                newHintKeys.push(letter.key);
+              let foundFlag = false;
+              for (let i = 0; i < newHintKeys.length; i++) {
+                let currentHint = [letter.key, index, letter.color];
+                if (arraysEqual(newHintKeys[i], currentHint)) {
+                  foundFlag = true;
+                }
               }
+              if (!foundFlag) {
+                newHintKeys.push([letter.key, index, letter.color]);
+              }
+              /*
+              if (!newHintKeys.includes([letter.key, index, letter.color])) {
+                newHintKeys.push([letter.key, index, letter.color]);
+              } */
               return newHintKeys;
             });
           }
           return;
         }
-        // add these green and yellow keys to a separate array for hint chars
 
         if (
           letter.color === "grey" &&
@@ -127,8 +158,8 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
       if (hardMode) {
         const guessArray = [...currentGuess];
         let flag = false;
-        hintKeys.forEach((letter) => {
-          if (!guessArray.includes(letter)) {
+        hintKeys.forEach((value) => {
+          if (!guessArray.includes(value[0])) {
             toast.warn("Hard Mode On - Must use all hints", {
               position: "bottom-right",
               autoClose: 200,
