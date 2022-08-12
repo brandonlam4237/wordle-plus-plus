@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import UseGameLogic from "../hooks/UseGameLogic";
 import Grid from "./Grid";
 import Keyboard from "./Keyboard";
 import Modal from "./Modal";
 import { ToastContainer, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ThemeContext } from "../App";
 
 function Wordle({ solution, wordBank }) {
+  const theme = useContext(ThemeContext);
   const {
     currentGuess,
     handleKeyUp,
@@ -45,19 +47,36 @@ function Wordle({ solution, wordBank }) {
       {showModal && (
         <Modal isCorrect={isCorrect} turn={turn} solution={solution} />
       )}
-      <ToastContainer
-        theme="dark"
-        position="bottom-right"
-        autoClose={200}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        transition={Flip}
-      />
+      {theme.theme === "light" && (
+        <ToastContainer
+          theme="dark"
+          position="bottom-right"
+          autoClose={200}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          transition={Flip}
+        />
+      )}
+      {theme.theme === "dark" && (
+        <ToastContainer
+          theme="light"
+          position="bottom-right"
+          autoClose={200}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          transition={Flip}
+        />
+      )}
     </div>
   );
 }

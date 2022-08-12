@@ -21,7 +21,7 @@ function SettingsModal({ closeSettings }) {
           </div>
 
           <div className="dark-theme">
-            <div>Dark Theme</div>
+            <div>Dark</div>
             <label className="switch">
               <input
                 type="checkbox"
