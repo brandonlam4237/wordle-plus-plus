@@ -9,6 +9,7 @@ import { SettingsContext } from "../App";
 
 function Wordle({ solution, wordBank }) {
   const settings = useContext(SettingsContext);
+  const hardMode = settings.hardMode;
   const {
     currentGuess,
     handleKeyUp,
@@ -17,7 +18,7 @@ function Wordle({ solution, wordBank }) {
     turn,
     usedKeys,
     handleScreenKey,
-  } = UseGameLogic(solution, wordBank);
+  } = UseGameLogic(solution, wordBank, hardMode);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {

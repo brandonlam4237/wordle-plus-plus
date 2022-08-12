@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const UseGameLogic = (solution, wordBank) => {
+const UseGameLogic = (solution, wordBank, hardMode) => {
   const [turn, setTurn] = useState(0);
   const [currentGuess, setCurrentGuess] = useState("");
   const [guesses, setGuesses] = useState([...Array(6)]);
@@ -56,24 +56,28 @@ const UseGameLogic = (solution, wordBank) => {
         const currentColor = newKeys[letter.key];
         if (letter.color === "green") {
           newKeys[letter.key] = "green";
-          setHintKeys((prevHintKeys) => {
-            let newHintKeys = [...prevHintKeys];
-            if (!newHintKeys.includes(letter.key)) {
-              newHintKeys.push(letter.key);
-            }
-            return newHintKeys;
-          });
+          if (hardMode) {
+            setHintKeys((prevHintKeys) => {
+              let newHintKeys = [...prevHintKeys];
+              if (!newHintKeys.includes(letter.key)) {
+                newHintKeys.push(letter.key);
+              }
+              return newHintKeys;
+            });
+          }
           return;
         }
         if (letter.color === "yellow" && currentColor !== "green") {
           newKeys[letter.key] = "yellow";
-          setHintKeys((prevHintKeys) => {
-            let newHintKeys = [...prevHintKeys];
-            if (!newHintKeys.includes(letter.key)) {
-              newHintKeys.push(letter.key);
-            }
-            return newHintKeys;
-          });
+          if (hardMode) {
+            setHintKeys((prevHintKeys) => {
+              let newHintKeys = [...prevHintKeys];
+              if (!newHintKeys.includes(letter.key)) {
+                newHintKeys.push(letter.key);
+              }
+              return newHintKeys;
+            });
+          }
           return;
         }
         // add these green and yellow keys to a separate array for hint chars
@@ -120,6 +124,28 @@ const UseGameLogic = (solution, wordBank) => {
         return;
       }
 
+      if (hardMode) {
+        const guessArray = [...currentGuess];
+        let flag = false;
+        hintKeys.forEach((letter) => {
+          if (!guessArray.includes(letter)) {
+            toast.warn("Hard Mode On - Must use all hints", {
+              position: "bottom-right",
+              autoClose: 200,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            flag = true;
+          }
+        });
+        if (flag) {
+          return;
+        }
+      }
+
       const formattedGuess = formatGuess();
       addNewGuess(formattedGuess);
     }
@@ -164,6 +190,28 @@ const UseGameLogic = (solution, wordBank) => {
           progress: undefined,
         });
         return;
+      }
+
+      if (hardMode) {
+        const guessArray = [...currentGuess];
+        let flag = false;
+        hintKeys.forEach((letter) => {
+          if (!guessArray.includes(letter)) {
+            toast.warn("Hard Mode On - Must use all hints", {
+              position: "bottom-right",
+              autoClose: 200,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            flag = true;
+          }
+        });
+        if (flag) {
+          return;
+        }
       }
 
       const formattedGuess = formatGuess();

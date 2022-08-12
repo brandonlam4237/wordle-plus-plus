@@ -28,7 +28,12 @@ function App() {
     if (contrast_mode !== null) {
       setContrastMode(JSON.parse(contrast_mode));
     }
+    const hard_mode = window.localStorage.getItem("HARD_MODE");
+    if (hard_mode !== null) {
+      setHardMode(JSON.parse(hard_mode));
+    }
   }, []);
+
   useEffect(() => {
     window.localStorage.setItem("THEME_MODE", JSON.stringify(theme));
   }, [theme]);
@@ -36,16 +41,10 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem("CONTRAST_MODE", JSON.stringify(contrastMode));
   }, [contrastMode]);
-  /*
+
   useEffect(() => {
-    const contrast_mode = window.localStorage.getItem("CONTRAST_MODE");
-    if (contrast_mode !== null) {
-      setContrastMode(JSON.parse(contrast_mode));
-    }
-  }, []);
-  useEffect(() => {
-    window.localStorage.setItem("CONTRAST_MODE", JSON.stringify(contrastMode));
-  }, [contrastMode]); */
+    window.localStorage.setItem("HARD_MODE", JSON.stringify(hardMode));
+  }, [hardMode]);
 
   const [solution, setSolution] = useState(null);
   const [wordBank, setWordBank] = useState([]);

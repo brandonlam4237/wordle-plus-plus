@@ -27,13 +27,24 @@ function SettingsModal({ closeSettings }) {
               <p>Any revealed hints must be used in subsequent guesses</p>
             </div>
             <label className="switch">
-              <input
-                type="checkbox"
-                onChange={() => {
-                  console.log(settings.hardMode);
-                  settings.toggleHardMode();
-                }}
-              />
+              {settings.hardMode && (
+                <input
+                  type="checkbox"
+                  onChange={() => {
+                    settings.toggleHardMode();
+                  }}
+                  checked
+                />
+              )}
+              {!settings.hardMode && (
+                <input
+                  type="checkbox"
+                  onChange={() => {
+                    settings.toggleHardMode();
+                  }}
+                />
+              )}
+
               <span className="slider" />
             </label>
           </div>
