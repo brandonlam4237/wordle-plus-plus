@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "../scss/settingsModal.scss";
 import "../scss/hc-settingsModal.scss";
 import { SettingsContext } from "../App";
@@ -15,10 +15,14 @@ function SettingsModal({ closeSettings }) {
           <div className="header">
             <div>SETTINGS</div>
             {settings.theme === "light" && (
-              <img src={closeLight} onClick={closeSettings} />
+              <img
+                src={closeLight}
+                onClick={closeSettings}
+                alt="close button"
+              />
             )}
             {settings.theme === "dark" && (
-              <img src={closeDark} onClick={closeSettings} />
+              <img src={closeDark} onClick={closeSettings} alt="close button" />
             )}
           </div>
           <div className="hard-mode">

@@ -27,10 +27,10 @@ function Navbar() {
             }}
           >
             {settings.theme === "light" && (
-              <img src={question} className="icon" />
+              <img src={question} className="icon" alt="question-icon" />
             )}
             {settings.theme === "dark" && (
-              <img src={questionDark} className="icon" />
+              <img src={questionDark} className="icon" alt="question-icon" />
             )}
           </div>
           <div
@@ -39,10 +39,14 @@ function Navbar() {
             }}
           >
             {settings.theme === "light" && (
-              <img src={chart} className="icon chart" />
+              <img src={chart} className="icon chart" alt="statistic-icon" />
             )}
             {settings.theme === "dark" && (
-              <img src={chartDark} className="icon chart" />
+              <img
+                src={chartDark}
+                className="icon chart"
+                alt="statistic-icon"
+              />
             )}
           </div>
           <div
@@ -51,10 +55,14 @@ function Navbar() {
             }}
           >
             {settings.theme === "light" && (
-              <img src={cog} className="icon settings" />
+              <img src={cog} className="icon settings" alt="settings-icon" />
             )}
             {settings.theme === "dark" && (
-              <img src={cogDark} className="icon settings" />
+              <img
+                src={cogDark}
+                className="icon settings"
+                alt="settings-icon"
+              />
             )}
           </div>
         </div>

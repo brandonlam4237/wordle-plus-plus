@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
 
 const UseGameLogic = (solution, wordBank, hardMode) => {
   const [turn, setTurn] = useState(0);

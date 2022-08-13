@@ -3,8 +3,6 @@ import UseGameLogic from "../hooks/UseGameLogic";
 import Grid from "./Grid";
 import Keyboard from "./Keyboard";
 import Modal from "./Modal";
-import { ToastContainer, Flip } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { SettingsContext } from "../App";
 import "../scss/game-toast.scss";
 
@@ -57,36 +55,6 @@ function Wordle({ solution, wordBank }) {
       <Keyboard usedKeys={usedKeys} handleScreenKey={handleScreenKey} />
       {showModal && (
         <Modal isCorrect={isCorrect} turn={turn} solution={solution} />
-      )}
-      {settings.theme === "light" && (
-        <ToastContainer
-          theme="dark"
-          position="bottom-right"
-          autoClose={200}
-          hideProgressBar
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          transition={Flip}
-        />
-      )}
-      {settings.theme === "dark" && (
-        <ToastContainer
-          theme="light"
-          position="bottom-right"
-          autoClose={200}
-          hideProgressBar
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          transition={Flip}
-        />
       )}
       {toastFlag && <div className="game-toast">{toastMessage}</div>}
     </div>

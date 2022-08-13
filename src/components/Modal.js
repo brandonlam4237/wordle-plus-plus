@@ -12,10 +12,10 @@ function Modal({ isCorrect, turn, solution }) {
         {isCorrect && (
           <div>
             {settings.theme === "light" && (
-              <img src={closeLight} onClick={setHideModal} />
+              <img src={closeLight} onClick={setHideModal} alt="close-button" />
             )}
             {settings.theme === "dark" && (
-              <img src={closeDark} onClick={setHideModal} />
+              <img src={closeDark} onClick={setHideModal} alt="close-button" />
             )}
 
             <h1>You Win!</h1>
@@ -33,10 +33,10 @@ function Modal({ isCorrect, turn, solution }) {
         {!isCorrect && (
           <div>
             {settings.theme === "light" && (
-              <img src={closeLight} onClick={setHideModal} />
+              <img src={closeLight} onClick={setHideModal} alt="close-button" />
             )}
             {settings.theme === "dark" && (
-              <img src={closeDark} onClick={setHideModal} />
+              <img src={closeDark} onClick={setHideModal} alt="close-button" />
             )}
             <h1>You Lose!</h1>
             <p className="solution-word">The word was: {solution}</p>

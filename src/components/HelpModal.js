@@ -14,10 +14,10 @@ function HelpModal({ closeModal }) {
           <div className="header">
             <div>HOW TO PLAY</div>
             {settings.theme === "light" && (
-              <img src={closeLight} onClick={closeModal} />
+              <img src={closeLight} onClick={closeModal} alt="close-button" />
             )}
             {settings.theme === "dark" && (
-              <img src={closeDark} onClick={closeModal} />
+              <img src={closeDark} onClick={closeModal} alt="close-button" />
             )}
           </div>
           <div className="description">
