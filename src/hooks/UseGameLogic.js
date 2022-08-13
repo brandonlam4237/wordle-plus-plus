@@ -156,6 +156,8 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
           // checks for yellow hint requirement
           if (!guessArray.includes(value[0])) {
             flag = true;
+            setToastFlag(true);
+            setToastMessage(`Guess must contain ${value[0].toUpperCase()}`);
           }
         });
         // check for green hints requirement
@@ -163,16 +165,28 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
           return value[2] === "green";
         });
 
-        // array of [letter, index] - now check that this pairing is found in the guess
+        // array of [letter, index, "green"] - now check that this pairing is found in the guess
         filteredHints.forEach((value) => {
           if (guessArray[value[1]] !== value[0]) {
             flag = true;
+            setToastFlag(true);
+            if (value[1] + 1 === 1) {
+              setToastMessage(`1st letter must be ${value[0].toUpperCase()}`);
+            } else if (value[1] + 1 === 2) {
+              setToastMessage(`2nd letter must be ${value[0].toUpperCase()}`);
+            } else if (value[1] + 1 === 3) {
+              setToastMessage(`3rd letter must be ${value[0].toUpperCase()}`);
+            } else if (value[1] + 1 === 4) {
+              setToastMessage(`4th letter must be ${value[0].toUpperCase()}`);
+            } else if (value[1] + 1 === 5) {
+              setToastMessage(`5th letter must be ${value[0].toUpperCase()}`);
+            } else if (value[1] + 1 === 6) {
+              setToastMessage(`6th letter must be ${value[0].toUpperCase()}`);
+            }
           }
         });
 
         if (flag) {
-          setToastFlag(true);
-          setToastMessage("Hard mode - must use all hints");
           return;
         }
       }
@@ -232,6 +246,8 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
           // checks for yellow hint requirement
           if (!guessArray.includes(value[0])) {
             flag = true;
+            setToastFlag(true);
+            setToastMessage(`Guess must contain ${value[0].toUpperCase()}`);
           }
         });
         // check for green hints requirement
@@ -243,12 +259,24 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
         filteredHints.forEach((value) => {
           if (guessArray[value[1]] !== value[0]) {
             flag = true;
+            setToastFlag(true);
+            if (value[1] + 1 === 1) {
+              setToastMessage(`1st letter must be ${value[0].toUpperCase()}`);
+            } else if (value[1] + 1 === 2) {
+              setToastMessage(`2nd letter must be ${value[0].toUpperCase()}`);
+            } else if (value[1] + 1 === 3) {
+              setToastMessage(`3rd letter must be ${value[0].toUpperCase()}`);
+            } else if (value[1] + 1 === 4) {
+              setToastMessage(`4th letter must be ${value[0].toUpperCase()}`);
+            } else if (value[1] + 1 === 5) {
+              setToastMessage(`5th letter must be ${value[0].toUpperCase()}`);
+            } else if (value[1] + 1 === 6) {
+              setToastMessage(`6th letter must be ${value[0].toUpperCase()}`);
+            }
           }
         });
 
         if (flag) {
-          setToastFlag(true);
-          setToastMessage("Hard mode - must use all hints");
           return;
         }
       }
