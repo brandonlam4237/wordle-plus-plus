@@ -49,7 +49,7 @@ function Wordle({ solution, wordBank }) {
     setTimeout(() => {
       setToastFlag(false);
     }, 2000);
-  }, [toastFlag]);
+  }, [toastFlag, setToastFlag]);
 
   return (
     <div className="content">
