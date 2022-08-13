@@ -49,7 +49,7 @@ function App() {
   const [solution, setSolution] = useState(null);
   const [wordBank, setWordBank] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3001/solutions")
+    fetch("https://wordle-data-db.herokuapp.com/solutions")
       .then((res) => res.json())
       .then((json) => {
         const randomWord = json[Math.floor(Math.random() * json.length)].word;
@@ -59,7 +59,7 @@ function App() {
   }, [setSolution]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/wordBank")
+    fetch("https://wordle-data-db.herokuapp.com/wordBank")
       .then((res) => res.json())
       .then((json) => {
         let array = [];

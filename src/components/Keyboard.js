@@ -8,7 +8,7 @@ function Keyboard({ usedKeys, handleScreenKey }) {
   const settings = useContext(SettingsContext);
 
   useEffect(() => {
-    fetch("http://localhost:3001/letters")
+    fetch("https://wordle-data-db.herokuapp.com/letters")
       .then((res) => res.json())
       .then((json) => {
         setLetters(json);
