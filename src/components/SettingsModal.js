@@ -92,7 +92,6 @@ function SettingsModal({ closeSettings }) {
                   type="checkbox"
                   onChange={() => {
                     settings.toggleContrastMode();
-                    console.log(settings.contrastMode);
                   }}
                 />
               )}

@@ -10,6 +10,8 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [usedKeys, setUsedKeys] = useState({});
   const [hintKeys, setHintKeys] = useState([]);
+  const [toastFlag, setToastFlag] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
 
   const arraysEqual = (a, b) => {
     if (a === b) return true;
@@ -124,24 +126,19 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
         return;
       }
       if (history.includes(currentGuess)) {
-        console.log("repeat guess");
+        setToastFlag(true);
+        setToastMessage("Word already guessed");
         return;
       }
       if (currentGuess.length !== 6) {
-        console.log("word too short");
+        setToastFlag(true);
+        setToastMessage("Not enough letters");
         return;
       }
 
       if (!wordBank.includes(currentGuess)) {
-        toast.warn("Not in word list", {
-          position: "bottom-right",
-          autoClose: 200,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        setToastFlag(true);
+        setToastMessage("Not in word list");
         return;
       }
 
@@ -174,15 +171,8 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
         });
 
         if (flag) {
-          toast.warn("Hard Mode - Must use all hints", {
-            position: "bottom-right",
-            autoClose: 200,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          setToastFlag(true);
+          setToastMessage("Hard mode - must use all hints");
           return;
         }
       }
@@ -212,24 +202,19 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
         return;
       }
       if (history.includes(currentGuess)) {
-        console.log("repeat guess");
+        setToastFlag(true);
+        setToastMessage("Word already guessed");
         return;
       }
       if (currentGuess.length !== 6) {
-        console.log("word too short");
+        setToastFlag(true);
+        setToastMessage("Not enough letters");
         return;
       }
 
       if (!wordBank.includes(currentGuess)) {
-        toast.warn("Not in word list", {
-          position: "bottom-right",
-          autoClose: 200,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        setToastFlag(true);
+        setToastMessage("Not in word list");
         return;
       }
 
@@ -262,15 +247,8 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
         });
 
         if (flag) {
-          toast.warn("Hard Mode - Must use all hints", {
-            position: "bottom-right",
-            autoClose: 200,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          setToastFlag(true);
+          setToastMessage("Hard mode - must use all hints");
           return;
         }
       }
@@ -300,6 +278,9 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
     handleKeyUp,
     usedKeys,
     handleScreenKey,
+    toastFlag,
+    setToastFlag,
+    toastMessage,
   };
 };
 

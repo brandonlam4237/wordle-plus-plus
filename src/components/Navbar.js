@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 import "../scss/nav.scss";
 import question from "../assets/question-icon.png";
 import cog from "../assets/settings-icon.png";
@@ -9,11 +9,13 @@ import { SettingsContext } from "../App";
 import chartDark from "../assets/chart-dark.png";
 import questionDark from "../assets/question-dark.png";
 import cogDark from "../assets/settings-dark.png";
+import Toast from "./Toast";
 
 function Navbar() {
   const [modalOpen, setModalOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const settings = useContext(SettingsContext);
+  const toastRef = useRef(null);
   return (
     <nav>
       <div className="container nav">
@@ -31,14 +33,18 @@ function Navbar() {
               <img src={questionDark} className="icon" />
             )}
           </div>
-          <a href="#">
+          <div
+            onClick={() => {
+              toastRef.current.showToast();
+            }}
+          >
             {settings.theme === "light" && (
-              <img src={chart} className="chart" />
+              <img src={chart} className="icon chart" />
             )}
             {settings.theme === "dark" && (
-              <img src={chartDark} className="chart" />
+              <img src={chartDark} className="icon chart" />
             )}
-          </a>
+          </div>
           <div
             onClick={() => {
               setSettingsOpen(true);
@@ -57,6 +63,7 @@ function Navbar() {
       {settingsOpen && (
         <SettingsModal closeSettings={() => setSettingsOpen(false)} />
       )}
+      <Toast ref={toastRef} message="Not implemented yet" type="error" />
     </nav>
   );
 }

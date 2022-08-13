@@ -1,0 +1,41 @@
+@import "colors";
+
+#show {
+  visibility: visible;
+}
+
+#hide {
+  visibility: hidden;
+}
+
+#light {
+  .toast {
+    z-index: 1000;
+    background-color: black;
+    color: white;
+    position: absolute;
+    font-weight: bold;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px;
+    font-size: 0.85rem;
+    border-radius: 4px;
+  }
+}
+
+#dark {
+  .toast {
+    z-index: 1000;
+    background-color: white;
+    color: black;
+    position: absolute;
+    font-weight: bold;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px;
+    font-size: 0.85rem;
+    border-radius: 4px;
+  }
+}

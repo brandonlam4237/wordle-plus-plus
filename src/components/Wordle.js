@@ -6,6 +6,7 @@ import Modal from "./Modal";
 import { ToastContainer, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { SettingsContext } from "../App";
+import "../scss/game-toast.scss";
 
 function Wordle({ solution, wordBank }) {
   const settings = useContext(SettingsContext);
@@ -18,6 +19,9 @@ function Wordle({ solution, wordBank }) {
     turn,
     usedKeys,
     handleScreenKey,
+    toastFlag,
+    setToastFlag,
+    toastMessage,
   } = UseGameLogic(solution, wordBank, hardMode);
   const [showModal, setShowModal] = useState(false);
 
@@ -40,6 +44,12 @@ function Wordle({ solution, wordBank }) {
     //prevent multiple keyup event listeners
     return () => window.removeEventListener("keyup", handleKeyUp);
   }, [handleKeyUp, isCorrect, turn]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setToastFlag(false);
+    }, 2000);
+  }, [toastFlag]);
 
   return (
     <div className="content">
@@ -78,6 +88,7 @@ function Wordle({ solution, wordBank }) {
           transition={Flip}
         />
       )}
+      {toastFlag && <div className="game-toast">{toastMessage}</div>}
     </div>
   );
 }
