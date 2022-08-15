@@ -53,7 +53,6 @@ function App() {
       .then((res) => res.json())
       .then((json) => {
         const randomWord = json[Math.floor(Math.random() * json.length)].word;
-        console.log("solution:", randomWord);
         setSolution(randomWord);
       });
   }, [setSolution]);

@@ -19,7 +19,18 @@ function Modal({ isCorrect, turn, solution }) {
             )}
 
             <h1>You Win!</h1>
-            <p className="solution-word">The word was: {solution}</p>
+            {settings.contrastMode === "normal" && (
+              <p style={{ color: "#6aaa64" }} className="solution-word">
+                The word was: {solution}
+              </p>
+            )}
+
+            {settings.contrastMode === "high" && (
+              <p style={{ color: "#85c0f9" }} className="solution-word">
+                The word was: {solution}
+              </p>
+            )}
+
             <p>Number of guesses: {turn}</p>
             <button
               onClick={() => {
@@ -39,7 +50,17 @@ function Modal({ isCorrect, turn, solution }) {
               <img src={closeDark} onClick={setHideModal} alt="close-button" />
             )}
             <h1>You Lose!</h1>
-            <p className="solution-word">The word was: {solution}</p>
+            {settings.contrastMode === "normal" && (
+              <p style={{ color: "#c9b458" }} className="solution-word">
+                The word was: {solution}
+              </p>
+            )}
+
+            {settings.contrastMode === "high" && (
+              <p style={{ color: "#f5793a" }} className="solution-word">
+                The word was: {solution}
+              </p>
+            )}
             <p>Too bad :(</p>
             <button
               onClick={() => {
