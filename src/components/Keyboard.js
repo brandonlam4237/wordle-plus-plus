@@ -1,73 +1,94 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import backspace from "../assets/backspace-icon.png";
 import { SettingsContext } from "../App";
 import backspaceDark from "../assets/backspace-dark.png";
 
 function Keyboard({ usedKeys, handleScreenKey }) {
-  const [letters, setLetters] = useState(null);
+  const letters = [
+    "q",
+    "w",
+    "e",
+    "r",
+    "t",
+    "y",
+    "u",
+    "i",
+    "o",
+    "p",
+    "a",
+    "s",
+    "d",
+    "f",
+    "g",
+    "h",
+    "j",
+    "k",
+    "l",
+    "enter",
+    "z",
+    "x",
+    "c",
+    "v",
+    "b",
+    "n",
+    "m",
+    "del",
+  ];
   const settings = useContext(SettingsContext);
-
-  useEffect(() => {
-    fetch("https://wordle-data-db.herokuapp.com/letters")
-      .then((res) => res.json())
-      .then((json) => {
-        setLetters(json);
-      });
-  }, []);
 
   return (
     <div className="keyboard">
       <div className="keys r1">
         {letters &&
-          letters.slice(0, 10).map((letter) => {
-            const color = usedKeys[letter.key];
+          letters.slice(0, 10).map((i) => {
+            const color = usedKeys[i];
             return (
               <div
-                key={letter.key}
+                key={i}
                 className={`${color} key`}
-                onClick={() => handleScreenKey(letter.key)}
+                onClick={() => handleScreenKey(i)}
               >
-                {letter.key}
+                {i}
               </div>
             );
           })}
       </div>
       <div className="keys r2">
         {letters &&
-          letters.slice(10, 19).map((letter) => {
-            const color = usedKeys[letter.key];
+          letters.slice(10, 19).map((i) => {
+            const color = usedKeys[i];
             return (
               <div
-                key={letter.key}
+                key={i}
                 className={`${color} key`}
-                onClick={() => handleScreenKey(letter.key)}
+                onClick={() => handleScreenKey(i)}
               >
-                {letter.key}
+                {i}
               </div>
             );
           })}
       </div>
       <div className="keys r3">
         {letters &&
-          letters.slice(19, 28).map((letter) => {
-            const color = usedKeys[letter.key];
-            if (letter.key === "enter") {
+          letters.slice(19, 28).map((i) => {
+            const color = usedKeys[i];
+            if (i === "enter") {
               return (
                 <div
-                  key={letter.key}
+                  key={i}
                   className={`${color} key util`}
-                  onClick={() => handleScreenKey(letter.key)}
+                  onClick={() => handleScreenKey(i)}
                 >
-                  {letter.key}
+                  {i}
                 </div>
               );
             }
-            if (letter.key === "del") {
+            if (i === "del") {
               return (
                 <div
-                  key={letter.key}
+                  key={i}
                   className={`${color} key util`}
-                  onClick={() => handleScreenKey(letter.key)}
+                  onClick={() => handleScreenKey(i)}
                 >
                   {settings.theme === "light" && (
                     <img
@@ -88,11 +109,11 @@ function Keyboard({ usedKeys, handleScreenKey }) {
             }
             return (
               <div
-                key={letter.key}
+                key={i}
                 className={`${color} key`}
-                onClick={() => handleScreenKey(letter.key)}
+                onClick={() => handleScreenKey(i)}
               >
-                {letter.key}
+                {i}
               </div>
             );
           })}
