@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useScoreContext } from "./useScoreContext";
 
 const UseGameLogic = (solution, wordBank, hardMode) => {
+  const { updateStats, logStats } = useScoreContext();
+
   const [turn, setTurn] = useState(0);
   const [currentGuess, setCurrentGuess] = useState("");
   const [guesses, setGuesses] = useState([...Array(6)]);
@@ -44,6 +47,10 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
   const addNewGuess = (formattedGuess) => {
     if (currentGuess === solution) {
       setIsCorrect(true);
+      updateStats(true);
+    }
+    if (turn === 5 && !isCorrect) {
+      updateStats(false);
     }
     setGuesses((prevGuesses) => {
       let newGuesses = [...prevGuesses];

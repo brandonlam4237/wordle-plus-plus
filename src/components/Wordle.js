@@ -5,6 +5,7 @@ import Keyboard from "./Keyboard";
 import Modal from "./Modal";
 import { SettingsContext } from "../App";
 import "../scss/game-toast.scss";
+import { useScoreContext } from "../hooks/useScoreContext";
 
 function Wordle({ solution, wordBank }) {
   const settings = useContext(SettingsContext);
