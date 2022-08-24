@@ -1,0 +1,76 @@
+@import "colors";
+
+#light {
+  .statChart {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 80%;
+    font-weight: bold;
+
+    .bar {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .bar > div {
+      background-color: $border-dark;
+      width: 50%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 3px;
+      padding-right: 8px;
+      color: white;
+    }
+    button {
+      font-weight: bold;
+      cursor: pointer;
+      margin: auto;
+      margin-top: 40px;
+      width: 30%;
+      padding: 10px;
+      border: solid;
+      border-radius: 4px;
+      background-color: $border-dark;
+      color: white;
+    }
+  }
+}
+
+#dark {
+  .statChart {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 80%;
+    font-weight: bold;
+
+    .bar {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .bar > div {
+      background-color: $border-dark2;
+      width: 50%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 3px;
+      padding-right: 8px;
+    }
+    button {
+      font-weight: bold;
+      cursor: pointer;
+      margin: auto;
+      margin-top: 40px;
+      width: 30%;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: $border-dark2;
+      color: white;
+    }
+  }
+}

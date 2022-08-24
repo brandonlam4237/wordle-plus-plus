@@ -4,13 +4,10 @@ import "./scss/game.scss";
 import "./scss/hc-game.scss";
 import Navbar from "./components/Navbar";
 import { createContext } from "react";
-import { useScoreContext } from "./hooks/useScoreContext";
 
 export const SettingsContext = createContext(null);
 
 function App() {
-  const { updateStats } = useScoreContext();
-
   const [theme, setTheme] = useState("light");
   const [hardMode, setHardMode] = useState(false);
   const [contrastMode, setContrastMode] = useState("normal");
@@ -57,8 +54,7 @@ function App() {
       .then((res) => res.json())
       .then((json) => {
         const randomWord = json[Math.floor(Math.random() * json.length)].word;
-        setSolution("return");
-        //setSolution(randomWord);
+        setSolution(randomWord);
       });
   }, [setSolution]);
 
@@ -90,22 +86,6 @@ function App() {
           <div className="app">
             <Navbar />
             {solution && <Wordle solution={solution} wordBank={wordBank} />}
-            <div>
-              <button
-                onClick={() => {
-                  updateStats(true);
-                }}
-              >
-                TEST WIN
-              </button>
-              <button
-                onClick={() => {
-                  updateStats(false);
-                }}
-              >
-                TEST LOSE
-              </button>
-            </div>
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import "../scss/settingsModal.scss";
-import "../scss/hc-settingsModal.scss";
-import { SettingsContext } from "../App";
-import closeLight from "../assets/close-light.png";
-import closeDark from "../assets/close-dark.png";
+import "../../scss/settingsModal.scss";
+import "../../scss/hc-settingsModal.scss";
+import { SettingsContext } from "../../App";
+import closeLight from "../../assets/close-light.png";
+import closeDark from "../../assets/close-dark.png";
 
 function SettingsModal({ closeSettings }) {
   const settings = useContext(SettingsContext);

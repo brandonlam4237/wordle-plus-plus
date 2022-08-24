@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useScoreContext } from "./useScoreContext";
 
 const UseGameLogic = (solution, wordBank, hardMode) => {
-  const { updateStats, logStats } = useScoreContext();
+  const { updateStats } = useScoreContext();
 
   const [turn, setTurn] = useState(0);
   const [currentGuess, setCurrentGuess] = useState("");
@@ -47,11 +47,14 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
   const addNewGuess = (formattedGuess) => {
     if (currentGuess === solution) {
       setIsCorrect(true);
-      updateStats(true);
+      updateStats(true, turn);
     }
     if (turn === 5 && !isCorrect) {
-      updateStats(false);
+      updateStats(false, turn);
     }
+    setTurn((prevTurn) => {
+      return prevTurn + 1;
+    });
     setGuesses((prevGuesses) => {
       let newGuesses = [...prevGuesses];
       newGuesses[turn] = formattedGuess;
@@ -60,9 +63,7 @@ const UseGameLogic = (solution, wordBank, hardMode) => {
     setHistory((prevHistory) => {
       return [...prevHistory, currentGuess];
     });
-    setTurn((prevTurn) => {
-      return prevTurn + 1;
-    });
+
     setUsedKeys((prevUsedKeys) => {
       let newKeys = { ...prevUsedKeys };
       formattedGuess.forEach((letter, index) => {

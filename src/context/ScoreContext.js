@@ -7,6 +7,7 @@ export const ScoreContextProvider = ({ children }) => {
   const [currStreak, setCurrStreak] = useState(0);
   const [maxStreak, setMaxStreak] = useState(0);
   const [wins, setWins] = useState(0);
+  const [guesses, setGuesses] = useState([0, 0, 0, 0, 0, 0]);
 
   // fetch stored stats on refresh
   useEffect(() => {
@@ -26,6 +27,10 @@ export const ScoreContextProvider = ({ children }) => {
     if (stored_wins !== null) {
       setWins(stored_wins);
     }
+    const stored_guesses = JSON.parse(localStorage.getItem("guesses"));
+    if (stored_guesses !== null) {
+      setGuesses(stored_guesses);
+    }
   }, []);
 
   useEffect(() => {
@@ -33,13 +38,10 @@ export const ScoreContextProvider = ({ children }) => {
     localStorage.setItem("streak", JSON.stringify(currStreak));
     localStorage.setItem("maxStreak", JSON.stringify(maxStreak));
     localStorage.setItem("wins", JSON.stringify(wins));
-  }, [games, currStreak, maxStreak, wins]);
+    localStorage.setItem("guesses", JSON.stringify(guesses));
+  }, [games, currStreak, maxStreak, wins, guesses]);
 
-  const logStats = () => {
-    console.log(games, currStreak, maxStreak, wins);
-  };
-
-  const updateStats = (win) => {
+  const updateStats = (win, guess) => {
     if (win) {
       setGames((prevGames) => prevGames + 1);
       setWins((prevWins) => prevWins + 1);
@@ -47,12 +49,16 @@ export const ScoreContextProvider = ({ children }) => {
       if (currStreak >= maxStreak) {
         setMaxStreak(currStreak + 1);
       }
+      setGuesses((prevGuesses) => {
+        const updatedGuesses = [...prevGuesses];
+        updatedGuesses[guess] = updatedGuesses[guess] + 1;
+        return updatedGuesses;
+      });
     }
     if (!win) {
       setGames((prevGames) => prevGames + 1);
       setCurrStreak(0);
     }
-    logStats();
   };
 
   return (
@@ -62,6 +68,7 @@ export const ScoreContextProvider = ({ children }) => {
         currStreak,
         maxStreak,
         wins,
+        guesses,
         updateStats,
       }}
     >
