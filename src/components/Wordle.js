@@ -26,6 +26,7 @@ function Wordle({ solution, wordBank }) {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    window.addEventListener("keyup", handleKeyUp);
     if (isCorrect) {
       setTimeout(() => {
         toastRef.current.showToast();
@@ -36,10 +37,6 @@ function Wordle({ solution, wordBank }) {
       }, 3000);
       window.removeEventListener("keyup", handleKeyUp);
     }
-  }, [isCorrect]);
-
-  useEffect(() => {
-    window.addEventListener("keyup", handleKeyUp);
 
     if (turn > 5) {
       setTimeout(() => {
@@ -53,7 +50,7 @@ function Wordle({ solution, wordBank }) {
 
     //prevent multiple keyup event listeners
     return () => window.removeEventListener("keyup", handleKeyUp);
-  }, [handleKeyUp, turn]);
+  }, [handleKeyUp, turn, isCorrect]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -65,13 +62,7 @@ function Wordle({ solution, wordBank }) {
     <div className="content">
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
       <Keyboard usedKeys={usedKeys} handleScreenKey={handleScreenKey} />
-      {showModal && (
-        <EndModal
-          setShowModal={setShowModal}
-          isCorrect={isCorrect}
-          turn={turn}
-        />
-      )}
+      {showModal && <EndModal isCorrect={isCorrect} turn={turn} />}
       <SolutionToast ref={toastRef} message={solution} />
       {toastFlag && <div className="game-toast">{toastMessage}</div>}
     </div>

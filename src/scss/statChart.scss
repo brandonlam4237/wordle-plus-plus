@@ -11,18 +11,26 @@
     .bar {
       display: flex;
       align-items: center;
-      gap: 5px;
     }
-    .bar > div {
+    .fill {
       background-color: $border-dark;
-      width: 50%;
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      padding: 3px;
+      margin-left: 5px;
+      height: 18px;
+    }
+    .num {
+      background-color: $border-dark;
+      height: 18px;
+      padding-left: 8px;
       padding-right: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       color: white;
     }
+
     button {
       font-weight: bold;
       cursor: pointer;
@@ -49,16 +57,24 @@
     .bar {
       display: flex;
       align-items: center;
-      gap: 5px;
     }
-    .bar > div {
+    .fill {
       background-color: $border-dark2;
       width: 50%;
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      padding: 3px;
+      margin-left: 5px;
+      height: 18px;
+    }
+    .num {
+      background-color: $border-dark2;
+      height: 18px;
+      padding-left: 8px;
       padding-right: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     button {
       font-weight: bold;

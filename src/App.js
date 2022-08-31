@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import Wordle from "./components/Wordle";
 import "./scss/game.scss";
