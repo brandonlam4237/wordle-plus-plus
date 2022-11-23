@@ -5,6 +5,8 @@ import "./scss/game.scss";
 import "./scss/hc-game.scss";
 import Navbar from "./components/Navbar";
 import { createContext } from "react";
+import JSONwordBank from "./json/wordBank.json";
+import JSONsolutions from "./json/solutions.json";
 
 export const SettingsContext = createContext(null);
 
@@ -50,16 +52,23 @@ function App() {
 
   const [solution, setSolution] = useState(null);
   const [wordBank, setWordBank] = useState([]);
+
+  const [words] = useState(JSONwordBank);
+  const [solutions] = useState(JSONsolutions);
+
   useEffect(() => {
-    fetch("https://wordle-data-db.herokuapp.com/solutions")
+    /*fetch("https://wordle-data-db.herokuapp.com/solutions")
       .then((res) => res.json())
       .then((json) => {
         const randomWord = json[Math.floor(Math.random() * json.length)].word;
         setSolution(randomWord);
-      });
-  }, [setSolution]);
+      }); */
+    const randomWord = solutions[Math.floor(Math.random() * solutions.length)];
+    setSolution(randomWord.word);
+  }, [setSolution, solutions]);
 
   useEffect(() => {
+    /*
     fetch("https://wordle-data-db.herokuapp.com/wordBank")
       .then((res) => res.json())
       .then((json) => {
@@ -68,8 +77,13 @@ function App() {
           array.push(json[i].word);
         }
         setWordBank(array);
-      });
-  }, [setWordBank]);
+      }); */
+    let array = [];
+    for (let i in words) {
+      array.push(words[i].word);
+    }
+    setWordBank(array);
+  }, [setWordBank, words]);
 
   return (
     <SettingsContext.Provider

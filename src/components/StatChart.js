@@ -19,11 +19,9 @@ function StatChart({ guesses }) {
       </div>
       <div className="bar">
         <p>2</p>
-        <div
-          className="fill"
-          style={{ width: `${fracValues[1] * 100}%` }}
-        ></div>
-        <div className="num">{guesses[1]}</div>
+        <div className="fill" style={{ width: `${fracValues[1] * 100}%` }}>
+          <div className="num">{guesses[1]}</div>
+        </div>
       </div>
       <div className="bar">
         <p>3</p>
