@@ -33,7 +33,10 @@
           gap: 30px;
         }
         @include sm {
-          gap: 15px;
+          gap: 0px;
+        }
+        .keyboard {
+          transform: scale(0.9);
         }
       }
       .grid {
@@ -72,8 +75,10 @@
               font-size: 1.6rem;
             }
             @include sm {
-              height: 3.2rem;
-              width: 3.2rem;
+              height: 8vh;
+              max-height: 4rem;
+              width: 8vh;
+              max-width: 4rem;
               font-size: 2rem;
             }
           }
@@ -328,7 +333,10 @@
           gap: 30px;
         }
         @include sm {
-          gap: 15px;
+          gap: 0px;
+        }
+        .keyboard {
+          transform: scale(0.9);
         }
       }
       .grid {
@@ -368,8 +376,10 @@
               font-size: 1.6rem;
             }
             @include sm {
-              height: 3.2rem;
-              width: 3.2rem;
+              height: 8vh;
+              max-height: 4rem;
+              width: 8vh;
+              max-width: 4rem;
               font-size: 2rem;
             }
           }

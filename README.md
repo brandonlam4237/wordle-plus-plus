@@ -4,8 +4,7 @@ https://wordlepp.netlify.app/
 
 Introducing Wordle++, all the fun of the original game, now with 20% more letters.
 
-Built in React and styled with SASS. The game fetches its word bank from a backend JSON server hosted through heroku. <br>
-(https://wordle-data-db.herokuapp.com/)
+Built in React and styled with Sass/scss. The game logic fetches its 6 letter guess word and solution word banks from local JSON files.
 
 ### The game
 
